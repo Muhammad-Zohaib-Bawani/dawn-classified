@@ -1,0 +1,28 @@
+
+
+
+
+.smaller{
+    font-size: 12px;
+    font-family: Mitr ;
+}
+.main-div{
+    margin-top: 20px;
+}
+.heading{
+    font-family: Fjalla One;
+}
+.tbtn{
+    vertical-align: baseline !important;
+    color: #333 !important;
+    border-color: #ffe305 !important;
+    background-color: #ffe305 !important;
+    font-weight: 600;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+.lastPara{
+    font-size: 10px;
+    font-family: mitr;
+}

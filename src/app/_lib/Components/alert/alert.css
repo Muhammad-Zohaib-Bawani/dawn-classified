@@ -1,0 +1,30 @@
+
+.custom-ok-button-className {
+    background-color: #ffe305 !important;
+    color: #333 !important;
+    box-shadow: none;
+  
+         
+  }
+  
+  .custom-ok-button-className:hover {
+    background-color: #e7e7e7 ;
+  }
+  .custom-ok-button-className:focus {
+   
+  box-shadow: none;
+  }
+  
+  
+  
+  .custom-swal2-popup {
+    z-index: 2000 !important; 
+  }
+  .custom-swal2-overlay {
+    z-index: 1999 !important; 
+  }
+  .swal2-confirm:focus {
+     box-shadow: none !important; 
+}
+
+

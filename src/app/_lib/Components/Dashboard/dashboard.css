@@ -1,0 +1,62 @@
+.addbtn {
+  width: 150px !important;
+  margin-top: 10px;
+}
+
+.ant-layout-sider-trigger {
+  position: relative !important;
+  background-color: #1677ff !important;
+}
+.border {
+  border: 2px solid black;
+}
+
+.ant-layout-header {
+  background-color: #fff !important;
+}
+.ant-layout .ant-layout-sider {
+  background-color: #fff !important;
+}
+
+.order-card {
+  background-color: #e1e2e3;
+  color: #000;
+  box-shadow: #000;
+}
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  border: 1px solid #1677ff;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.text-left {
+  font-size: 40px;
+  font-weight: 600;
+}
+.card .card-block {
+  padding: 25px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+.heading {
+  margin-top: 20px;
+  margin-left: 26px;
+  font-size: 20px;
+}
+@media screen and (max-width: 400px) {
+  .addbtn {
+    width: 70px;
+    font-size: 8px;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+.footer {
+    background-color: #444445;
+    padding-top: 10px;
+    color: #ffffff;
+    padding-bottom: 10px;
+    font-family: Cabin ;
+}
+.footerLinks, .footerLinks a {
+    font-size: 12px;
+    text-decoration: none;
+    display: block;
+    color: #fff !important;
+}
