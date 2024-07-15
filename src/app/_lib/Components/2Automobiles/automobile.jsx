@@ -17,73 +17,17 @@ export default function Automobile({ setIsModalOpen }) {
   const handleModel = (event) => {
     setSelectedModel(event.target.value);
   };
-  const model = [
-    "Mehran",
-    "Cultus",
-    "Alto",
-    "Bolan",
-    "Khyber",
-    "Aerio",
-    "Alto Eco",
-    "Alto Lapin",
-    "APV",
-    "Baleno",
-    "Carry",
-    "Celerio",
-    "Cervo",
-    "Ciaz",
-    "Escudo",
-    "Every",
-    "Every Wagon",
-    "FX",
-    "Gn250",
-    "Hustler",
-    "Ignis",
-    "Jimny",
-    "Jimny Sierra",
-    "Kei",
-    "Kizashi",
-    "Landy",
-    "Liana",
-    "Lj80",
-    "Margalla",
-    "MR Wagon",
-    "Other",
-    "Palette",
-    "Palette Sw",
-    "Potohar",
-    "Ravi",
-    "Samuari",
-    "Sj410",
-    "Solio",
-    "Solio Bandit",
-    "Spacia",
-    "Splash",
-    "Swift",
-    "Sx4",
-    "Twin",
-    "Vitara",
-    "Wagon R",
-    "Wagon R Stingray",
-  ];
-  // Version
-  const version = [
-    "VX Euro II",
-    "VXR Euro II",
-    "VX Euro II (CNG)",
-    "VXR Euro II (CNG)",
-    "VX",
-    "VXR",
-    "VX (CNG)",
-    "VXR (CNG)",
-  ];
+  const models = car.find((make) => make.make === selectedMake)?.models || [];
 
+  // Version
+  const versions =
+    models.find((model) => model.model === selectedModel)?.versions || [];
   // Confirm Button
 
   const handleConfirm = () => {
     setIsModalOpen(false);
   };
-  console.log("car--", car);
+
   return (
     <>
       <div className="head">
@@ -99,6 +43,9 @@ export default function Automobile({ setIsModalOpen }) {
                 onChange={handleMake}
                 className=" col-sm-12 col-md-7 rselect"
               >
+                <option value="" disabled selected hidden>
+                  Please select
+                </option>
                 {car.map((make, index) => (
                   <option value={make.make} key={index}>
                     {make.make}
@@ -113,14 +60,15 @@ export default function Automobile({ setIsModalOpen }) {
                 className=" col-sm-12 col-md-7 rselect"
                 onChange={handleModel}
               >
+                <option value="" disabled selected hidden>
+                  Please select
+                </option>
                 {selectedMake &&
-                  car
-                    .find((make) => make.make === selectedMake)
-                    ?.models.map((model, index) => (
-                      <option key={index} value={model.model}>
-                        {model.model}
-                      </option>
-                    ))}
+                  models.map((model, index) => (
+                    <option key={index} value={model.model}>
+                      {model.model}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="row line">
@@ -129,15 +77,15 @@ export default function Automobile({ setIsModalOpen }) {
                 placeholder="Please select"
                 className=" col-sm-12 col-md-7 rselect"
               >
+                <option value="" disabled selected hidden>
+                  Please select
+                </option>
                 {selectedModel &&
-                  car
-                    .find((make) => make.make === selectedMake)
-                    .models.find((model) => model.model === selectedModel)
-                    .versions.map((version, index) => (
-                      <option key={index} value={version}>
-                        {version}
-                      </option>
-                    ))}
+                  versions.map((version, index) => (
+                    <option key={index} value={version}>
+                      {version}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="row line">

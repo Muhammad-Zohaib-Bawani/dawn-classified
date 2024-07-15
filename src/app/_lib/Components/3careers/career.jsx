@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
-import "./careers.css";
+import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, DatePicker, Space, theme } from "antd";
+import { DatePicker, Space, theme } from "antd";
 import {
   Area,
   department,
@@ -65,16 +65,18 @@ export default function Career({ setIsModalOpen }) {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <div className="row mt">
-              <label className="col-sm-12 col-md-5">Keyword / Title</label>
-              <input type="text" className="col-sm-12 col-md-6 input" />
+          <div className="col-md-4 mt-2 side-border">
+            <div className="row line">
+              <label className="col-sm-12 col-md-5 rlabel ">
+                Keyword / Title
+              </label>
+              <input type="text" className="col-sm-12 col-md-6 input rselect" />
             </div>
-            <div className=" mt">
-              <label for="jobType" className="col-sm-12 col-md-5">
+            <div className=" row line">
+              <label for="jobType" className="col-sm-12 col-md-5 rlabel">
                 Job Type
               </label>
-              <select name="jobType" className="col-sm-12 col-md-6">
+              <select name="jobType" className="col-sm-12 col-md-6 rselect ">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -84,11 +86,14 @@ export default function Career({ setIsModalOpen }) {
               </select>
             </div>
 
-            <div className="row mt">
-              <label for="Functional Area" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label
+                for="Functional Area"
+                className="col-sm-12 col-md-5 rlabel"
+              >
                 Functional Area
               </label>
-              <select name="jobType" className="col-sm-12 col-md-6">
+              <select name="jobType" className="col-sm-12 col-md-6 rselect">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -100,11 +105,11 @@ export default function Career({ setIsModalOpen }) {
               </select>
             </div>
 
-            <div className="row mt">
-              <label for="Department" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label for="Department" className="col-sm-12 col-md-5 rlabel">
                 Department
               </label>
-              <select name="Department" className="col-sm-12 col-md-6">
+              <select name="Department" className="col-sm-12 col-md-6 rselect">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -115,19 +120,22 @@ export default function Career({ setIsModalOpen }) {
                 ))}
               </select>
             </div>
-            <div className="row mt">
-              <label for="skills  " className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label for="skills  " className="col-sm-12 col-md-5 rlabel">
                 Skills*
               </label>
-              <input type="text" className="col-sm-12 col-md-6 input" />
+              <input type="text" className="col-sm-12 col-md-6 input rselect" />
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="row mt">
-              <label for="Carrer Level*" className="col-sm-12 col-md-5">
+          <div className="col-md-4 mt-2 side-border">
+            <div className="row line">
+              <label for="Carrer Level*" className="col-sm-12 col-md-5 rlabel">
                 Carrer Level*
               </label>
-              <select name="Carrer Level*" className="col-sm-12 col-md-6">
+              <select
+                name="Carrer Level*"
+                className="col-sm-12 col-md-6 rselect"
+              >
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -139,11 +147,17 @@ export default function Career({ setIsModalOpen }) {
               </select>
             </div>
 
-            <div className="row mt">
-              <label for="Minimum Experience" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label
+                for="Minimum Experience"
+                className="col-sm-12 col-md-5 rlabel"
+              >
                 Minimum Experience
               </label>
-              <select name="Minimum Experience" className="col-sm-12 col-md-6">
+              <select
+                name="Minimum Experience"
+                className="col-sm-12 col-md-6 rselect"
+              >
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -155,18 +169,21 @@ export default function Career({ setIsModalOpen }) {
               </select>
             </div>
 
-            <div className="row mt">
-              <label for="Minimum Salary*" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label
+                for="Minimum Salary*"
+                className="col-sm-12 col-md-5 rlabel"
+              >
                 Minimum Salary*
               </label>
-              <input type="number" className="col-sm-12 col-md-6 input" />
+              <input type="number" className="col-sm-12 col-md-6  rselect" />
             </div>
 
-            <div className="row mt">
-              <label for="Education" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label for="Education" className="col-sm-12 col-md-5 rlabel">
                 Education
               </label>
-              <select name="Education " className="col-sm-12 col-md-6">
+              <select name="Education " className="col-sm-12 col-md-6 rselect">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -177,11 +194,11 @@ export default function Career({ setIsModalOpen }) {
                 ))}
               </select>
             </div>
-            <div className="row mt">
-              <label for="city" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label for="city" className="col-sm-12 col-md-5 rlabel">
                 City*
               </label>
-              <select name="city " className="col-sm-12 col-md-6">
+              <select name="city " className="col-sm-12 col-md-6 rselect">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -193,11 +210,11 @@ export default function Career({ setIsModalOpen }) {
               </select>
             </div>
 
-            <div className="row mt">
-              <label for="gender" className="col-sm-12 col-md-5">
+            <div className="row line">
+              <label for="gender" className="col-sm-12 col-md-5 rlabel">
                 Gender
               </label>
-              <select name="gender " className="col-sm-12 col-md-6">
+              <select name="gender " className="col-sm-12 col-md-6 rselect">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -207,13 +224,13 @@ export default function Career({ setIsModalOpen }) {
               </select>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="row mt">
-              <label for="shift" className="col-sm-12 col-md-4">
+          <div className="col-md-4 mt-2">
+            <div className="row line">
+              <label for="shift" className="col-sm-12 col-md-4 rlabel">
                 Shift
               </label>
 
-              <select name="shift" className="col-sm-12 col-md-6">
+              <select name="shift" className="col-sm-12 col-md-6 rselect">
                 <option value="" disabled selected hidden>
                   Please select
                 </option>
@@ -223,14 +240,20 @@ export default function Career({ setIsModalOpen }) {
                 <option value="Rotation">Rotation</option>
               </select>
             </div>
-            <label for="Last Date to apply*">Last Date to apply*City*</label>
-            <Space size={12} direction="vertical">
-              <DatePicker cellRender={cellRender} />
-            </Space>
+            <div className="row line">
+              <label for="Last Date to apply*" className="rlabel">
+                Last Date to apply*City*
+              </label>
+              <Space size={12} direction="vertical">
+                <DatePicker cellRender={cellRender} />
+              </Space>
+            </div>
           </div>
         </div>
         <div className="row">
-          <label htmlFor="Summary Text*">Summary Text*</label>
+          <label htmlFor="Summary Text*" className="rlabel">
+            Summary Text*
+          </label>
           <div className="d-flex">
             <textarea className="textarea"></textarea>
           </div>

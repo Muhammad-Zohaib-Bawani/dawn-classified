@@ -1,8 +1,8 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import "./calender.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { MdCancel } from "react-icons/md";
-import zIndex from "@mui/material/styles/zIndex";
 
 export default function Calender({ setSelectedDates, selectedDates }) {
   const today = new Date();
@@ -26,10 +26,6 @@ export default function Calender({ setSelectedDates, selectedDates }) {
 
   const firstDay = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-  useEffect(() => {
-    // This effect runs on mount and when currentMonth or currentYear changes.
-  }, [currentMonth, currentYear]);
 
   const handlePrevMonth = () => {
     if (currentMonth === 0) {
@@ -85,7 +81,7 @@ export default function Calender({ setSelectedDates, selectedDates }) {
 
   return (
     <>
-      <div className="p-4 max-w-md mx-auto" style={{ zIndex: "-999" }}>
+      <div className="p-4 max-w-md mx-auto ">
         <div className="flex justify-between items-center topDate">
           <button onClick={handlePrevMonth} className="text-500 prev">
             ◄

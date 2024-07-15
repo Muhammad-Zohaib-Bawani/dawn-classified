@@ -1,96 +1,87 @@
-.prev{
-    font-size: 20px;
-    font-weight: 300;
-    padding-right: 10px;
-    margin-right: 90px;
-
+.prev {
+  font-size: 20px;
+  font-weight: 300;
+  padding-right: 10px;
+  margin-right: 90px;
 }
-.next{
-    font-size: 20px;
-    font-weight: 300;
-    padding-left: 10px;
-    margin-left: 70px;
-}
-
-.Insertions{
-
-    color: #333;
-    border: 1px solid #dad6d6;
-    background-color: #e7e7e7;
-    font-weight: 600;
-    font-size: 14px;
-    border-radius: 3px;
-    width: 60px;
-    height: 30px;
-    text-align: center;
-}
-.top{
-    margin-top: 30px !important;
+.next {
+  font-size: 20px;
+  font-weight: 300;
+  padding-left: 10px;
+  margin-left: 70px;
 }
 
- 
-  .week{
-    margin-bottom: 0;
-  }
-  
+.Insertions {
+  color: #333;
+  border: 1px solid #dad6d6;
+  background-color: #e7e7e7;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 3px;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+}
+.top {
+  margin-top: 30px !important;
+}
 
-  .selection-box{
-    display: inline-block;
-    position: relative;
-    clear: both;
-    /* top: 320px; */
-    background-color: #e7e7e7;
-    border: #999;
-    padding: 5px;
-    width: auto;
-    color: #4b5f61;
-    border-radius: 5px;
-    margin: 5px 5px 0px 0px;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    
+.week {
+  margin-bottom: 0;
+}
+
+.selection-box {
+  display: inline-block;
+  position: relative;
+  clear: both;
+  /* top: 320px; */
+  background-color: #e7e7e7;
+  border: #999;
+  padding: 5px;
+  width: auto;
+  color: #4b5f61;
+  border-radius: 5px;
+  margin: 5px 5px 0px 0px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.blurred {
+  color: #e7e7e7;
+  pointer-events: none;
+}
+
+.blurred:hover::after {
+  content: "Not available";
+  display: block;
+  color: red;
+  font-size: 0.75rem;
+}
+.cut {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.dateBox {
+  height: 38.375px;
+  line-height: 38.375px;
+
+  margin-left: -1px;
+  margin-top: -1px;
+  z-index: 1080;
+  border: 1px solid #dad6d6;
+}
+.colr {
+  background-color: #eee;
+}
+.week {
+  color: #222;
+  font-weight: 700;
+  cursor: wait !important;
+}
+
+@media screen and (max-width: 370px) {
+  .Insertions {
+    margin-top: 15px;
   }
-  .blurred {
-    color: #e7e7e7;
-    pointer-events: none;
-  }
-  
-  .blurred:hover::after {
-    content: "Not available";
-    display: block;
-    color: red;
-    font-size: 0.75rem;
-  }
-  .cut {
-    margin-left: 10px; 
-    cursor: pointer; 
-  }
-  .dateBox{
-    
-    height: 38.375px;
-    line-height: 38.375px;
-    
-    margin-left: -1px;
-    margin-top: -1px;
-    z-index: 1080;
-    border: 1px solid  #dad6d6; 
-  }
-  .colr{
-    background-color: #eee;
-  }
-  .week{
-    
-    color: #222;
-    font-weight: 700;
-    cursor: wait !important;
-    
- 
-  }
-  @media screen and (max-width: 370px) {
-    .Insertions{
-      margin-top: 15px;
-    }
-  }
-  
+}

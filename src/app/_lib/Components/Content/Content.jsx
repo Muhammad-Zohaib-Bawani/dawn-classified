@@ -29,18 +29,18 @@ export default function Main({ setSelectedDates, selectedDates }) {
   const [images, setImages] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [alertWord, setAlertWord] = useState();
-  const [wordCount, setWordCount] = useState();
+  const [wordCount, setWordCount] = useState(0);
   const [warning, setWarning] = useState(false);
   const [wordNumber, setWordNumber] = useState(0);
-  const [insertion, setInsertion] = useState();
+  const [insertion, setInsertion] = useState(0);
   const [dollarRate, setDollarRate] = useState([]);
   const [isBold, setIsBold] = useState(false);
+  const [boldWordCount, setBoldWordCount] = useState(0);
+  const contentRef = useRef(null);
   const [calculation, setCalculation] = useState(false);
-  const [total, setTotal] = useState(0);
   const [karachi, setKarachi] = useState(0);
   const [lahore, setLahore] = useState(0);
   const [islamabad, setIslamabad] = useState(0);
-  const [nationwide, setNationwide] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,17 +66,16 @@ export default function Main({ setSelectedDates, selectedDates }) {
 
         if (wordDocSnap.exists()) {
           const data = wordDocSnap.data();
-          console.log(data.name);
+
           const fetchPrice = async (cityName) => {
             const city = await data.name.find((city) => city.name === cityName);
 
             return city.price;
           };
           setKarachi(await fetchPrice("karachi"));
-          console.log("test", await fetchPrice("karachi"));
+
           setLahore(await fetchPrice("lahore"));
           setIslamabad(await fetchPrice("Islamabad"));
-          setNationwide(islamabad + karachi + lahore);
         }
       } catch (error) {
         console.error("Error fetching word data:", error.message);
@@ -134,21 +133,30 @@ export default function Main({ setSelectedDates, selectedDates }) {
   };
 
   // bold
-
-  const handleBoldButtonClick = () => {
-    setIsBold(!isBold);
+  const toggleBold = () => {
+    setIsBold((prev) => !prev);
+    document.execCommand("bold");
+  };
+  const countBoldWords = () => {
+    if (!contentRef.current) return;
+    const boldElements = contentRef.current.querySelectorAll("b, strong");
+    let count = 0;
+    boldElements.forEach((el) => {
+      count += el.innerText.split(/\s+/).filter(Boolean).length;
+    });
+    console.log("bold word count---", count);
+    setBoldWordCount(count);
   };
   // text area
 
   const handleTextChange = (event) => {
-    setText(event.target.value);
-    const words = event.target.value
+    setText(event.target.innerText);
+
+    const words = event.target.innerText
       .trim()
       .split(/\s+/)
       .filter((word) => word.length > 0);
-
     const newWordNumber = words.length;
-    console.log("number", newWordNumber);
     setWordNumber(newWordNumber);
 
     if (newWordNumber >= 20) {
@@ -201,13 +209,19 @@ export default function Main({ setSelectedDates, selectedDates }) {
   };
 
   // Calculate
-  console.log("decode----->", nationwide, insertion, wordCount);
+  const nationwide = karachi + lahore + islamabad;
+
   const prices = {
-    Karachi: karachi * insertion * wordCount,
-    Lahore: lahore * insertion * wordCount,
-    Islamabad: islamabad * insertion * wordCount,
-    Nationwide: nationwide * insertion * wordCount,
+    Karachi: karachi * insertion * wordCount + boldWordCount * karachi,
+    Lahore: lahore * insertion * wordCount + boldWordCount * lahore,
+    Islamabad: islamabad * insertion * wordCount + boldWordCount * islamabad,
+    Nationwide: nationwide * insertion * wordCount + boldWordCount * nationwide,
   };
+  console.log("decode-----", karachi, insertion, wordCount, boldWordCount);
+  const calculatedTotal = selectedEdition.reduce((acc, value) => {
+    const price = prices[value] || 0;
+    return acc + price;
+  }, 0);
 
   const handleCalculate = () => {
     if (selectedLocation === "") {
@@ -236,22 +250,15 @@ export default function Main({ setSelectedDates, selectedDates }) {
       setTimeout(() => setShowAlert(true), 0);
     } else {
       setShowAlert(false);
-      document
-        .getElementById("target-section")
-        .scrollIntoView({ behavior: "smooth" });
+      countBoldWords();
       setWarning(false);
       setWordCount(wordNumber >= 20 ? wordNumber : "20");
       setInsertion(selectedDates.size);
 
       setCalculation(true);
-      // price calculation
-      let newtotal = 0;
-      selectedEdition.forEach((value) => {
-        console.log("value---->", value);
-        console.log("check--", prices[value]);
-        newtotal += prices[value];
-      });
-      setTotal(newtotal);
+      document
+        .getElementById("target-section")
+        .scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -372,7 +379,9 @@ export default function Main({ setSelectedDates, selectedDates }) {
                     Please select
                   </option>
                   {locationData.map((value, index) => (
-                    <option value={value}>{value}</option>
+                    <option value={value} key={index}>
+                      {value}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -474,12 +483,8 @@ export default function Main({ setSelectedDates, selectedDates }) {
               </div>
 
               <div className="row line">
-                <button
-                  className="col-3 bold "
-                  id={isBold ? "bold" : ""}
-                  onClick={handleBoldButtonClick}
-                >
-                  Bold
+                <button onClick={toggleBold} className="col-3 bold ">
+                  {isBold ? "Stop Bold" : "Bold"}
                 </button>
 
                 <p
@@ -493,19 +498,12 @@ export default function Main({ setSelectedDates, selectedDates }) {
               </div>
               <div className="row line ">
                 <div>
-                  <textarea
-                    onChange={handleTextChange}
+                  <div
+                    ref={contentRef}
+                    contentEditable
                     id="area"
-                    // ref={textRef}
-                    //contentEditable
-
-                    // style={{
-                    //   fontWeight: isBold ? "bold" : "normal",
-                    //   border: "1px solid black",
-                    //   padding: "10px",
-                    // }}
-                    // dangerouslySetInnerHTML={{ __html: text }}
-                  ></textarea>
+                    onInput={handleTextChange}
+                  ></div>
                   {warning && (
                     <p
                       style={{
@@ -683,6 +681,7 @@ export default function Main({ setSelectedDates, selectedDates }) {
                   type="text"
                   className=" col-sm-12 col-md-4 recieptInput"
                   disabled="disabled"
+                  value={boldWordCount}
                 />
               </div>
               <div className="row mt-10">
@@ -775,7 +774,7 @@ export default function Main({ setSelectedDates, selectedDates }) {
                 }}
               >
                 <span>Rs.</span>
-                <span className="rupee">{total}</span>
+                <span className="rupee">{calculatedTotal}</span>
               </div>
 
               <div
